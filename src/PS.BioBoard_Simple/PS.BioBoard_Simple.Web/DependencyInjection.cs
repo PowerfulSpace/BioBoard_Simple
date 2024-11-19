@@ -15,14 +15,18 @@ namespace PS.BioBoard_Simple.Web
         {
             services.AddControllersWithViews();
 
-
-
             services.AddScoped<IPersonService, PersonService>();
 
             services.AddValidatorsFromAssemblyContaining<PersonValidator>();
+            //services.AddValidatorsFromAssemblyContaining<PersonValidator>();
 
-            services.AddFluentValidationAutoValidation();
-            services.AddFluentValidationClientsideAdapters();
+            services.AddFluentValidationAutoValidation(options =>
+            {
+                options.DisableDataAnnotationsValidation = true;
+            });
+
+            //services.AddFluentValidationAutoValidation();
+            //services.AddFluentValidationClientsideAdapters();
             
             services
                .AddPersistance(configuration);
