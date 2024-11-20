@@ -44,6 +44,5 @@ namespace PS.BioBoard_Simple.Web
 
             return services;
         }
-
     }
 }
